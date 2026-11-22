@@ -1,0 +1,77 @@
+/* ============ THEME A: DUEL DISK OS ============
+ The site as 5D's-era duel hardware: near-black navy, thin cyan lines, notched panel corners, Level stars,
+ mono readouts, faint scanlines and a Synchro ring in the background. Default theme. Dark by nature. */
+:root[data-theme=duel]{
+  --bg:#070b14; --surface:#0b1524; --ink:#dcecff; --muted:#86a6c6; --line:#1d3a5c;
+  --accent:#3ee0ff; --accent-soft:rgba(62,224,255,.09); --on-accent:#03121c;
+  --gold:#ffd65a; --good:#4be0a0; --bad:#ff6b7a;
+  --display:"Chakra Petch", system-ui, sans-serif; --body:"IBM Plex Sans", system-ui, sans-serif; --mono:"IBM Plex Mono", ui-monospace, monospace;
+  --notch:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+  --notch-s:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);
+  color-scheme:dark;
+}
+[data-theme=duel] body{font-size:16.5px}
+/* Background: scanlines over everything, one Synchro ring top right. Both sit behind the content. */
+[data-theme=duel] body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:repeating-linear-gradient(0deg,rgba(120,200,255,.03) 0 1px,transparent 1px 3px)}
+[data-theme=duel] body::after{content:"";position:fixed;right:-160px;top:-120px;width:560px;height:560px;border-radius:50%;pointer-events:none;z-index:0;border:1px dashed rgba(62,224,255,.16);box-shadow:inset 0 0 0 70px transparent,inset 0 0 0 71px rgba(62,224,255,.05),inset 0 0 0 150px transparent,inset 0 0 0 151px rgba(255,214,90,.07)}
+[data-theme=duel] main,[data-theme=duel] .top{position:relative;z-index:1}
+[data-theme=duel] .top{position:sticky;z-index:20;background:rgba(7,11,20,.88);border-bottom:1px solid var(--line)}
+[data-theme=duel] .brand{font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:16px}
+[data-theme=duel] .brand-mark{background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:0;clip-path:var(--notch-s);font-size:12px}
+[data-theme=duel] .nav a{border-radius:0;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border:1px solid transparent;padding:6px 10px}
+[data-theme=duel] .nav a.on{background:var(--accent-soft);color:var(--ink);border-color:var(--accent);clip-path:var(--notch-s)}
+[data-theme=duel] h1,[data-theme=duel] h2{text-transform:uppercase;letter-spacing:.02em;font-weight:700}
+[data-theme=duel] .hero h1{font-size:clamp(32px,6vw,52px);line-height:1}
+[data-theme=duel] .crumbs,[data-theme=duel] .pill,[data-theme=duel] .rcount,[data-theme=duel] .note,[data-theme=duel] .level-tag,[data-theme=duel] .lnum,[data-theme=duel] th,[data-theme=duel] .call b.tag,[data-theme=duel] .goals h4,[data-theme=duel] .fc-face small,[data-theme=duel] .eq .math,[data-theme=duel] .log{font-family:var(--mono)}
+[data-theme=duel] .crumbs{text-transform:uppercase;letter-spacing:.12em;font-size:12px}
+/* Panels: square, notched, thin-lined */
+[data-theme=duel] :is(.goals,.recap,.call,.eq,.timeline,.term,.banl section,.board,.bpanel,.filters,.sheet,.fc-face,.deckcard,.skipbar,.lcard,.synpanel){border-radius:0;clip-path:var(--notch);background:var(--surface);border-color:var(--line)}
+[data-theme=duel] .call.analogy{background:var(--accent-soft);border:1px solid rgba(62,224,255,.25)}
+[data-theme=duel] .call.key{border-left-color:var(--accent);background:linear-gradient(90deg,var(--accent-soft),transparent 60%)}
+[data-theme=duel] .call b.tag{font-size:11px;letter-spacing:.18em}
+[data-theme=duel] .goals h4{color:var(--gold);letter-spacing:.18em;font-size:12px}
+[data-theme=duel] .recap h2{color:var(--accent)}
+[data-theme=duel] .lcard{transition:border-color .15s,background-color .15s}
+[data-theme=duel] a.lcard:hover{border-color:var(--accent);background:#0e1c30}
+[data-theme=duel] .lnum{border-radius:0;background:transparent;border:1px solid var(--accent);color:var(--accent);font-size:13px;clip-path:var(--notch-s)}
+[data-theme=duel] .lcard.done .lnum{background:var(--accent);color:var(--on-accent)}
+[data-theme=duel] .lcard.locked .lnum{border-color:var(--line);color:var(--muted)}
+[data-theme=duel] .level-tag{border-radius:0;background:transparent;color:var(--gold);border:1px solid var(--gold);font-size:13px;letter-spacing:.14em;font-weight:600}
+[data-theme=duel] .level-tag.zero{color:var(--accent);border-color:var(--accent);background:transparent}
+[data-theme=duel] .pill{border-radius:0;background:transparent;border:1px solid var(--line);text-transform:uppercase;letter-spacing:.1em;font-size:11px}
+/* Buttons and controls */
+[data-theme=duel] .btn{border-radius:0;clip-path:var(--notch-s);background:transparent;border:1px solid #2a5884;color:var(--ink);font-family:var(--display);font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:14px;transition:background-color .15s,border-color .15s}
+[data-theme=duel] .btn:hover{border-color:var(--accent);background:var(--accent-soft)}
+[data-theme=duel] .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+[data-theme=duel] .btn.primary:hover{background:#7aebff}
+[data-theme=duel] .btn.small{font-size:12px}
+[data-theme=duel] :is(select,input[type=text],input[type=number],input[type=search],textarea){border-radius:0;background:#081120;border-color:var(--line);font-family:var(--body)}
+[data-theme=duel] :is(select,input,textarea):focus{border-color:var(--accent);outline:none}
+[data-theme=duel] .chip{border-radius:0;font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;font-size:12px;background:transparent}
+[data-theme=duel] .chip.on{background:var(--accent);color:var(--on-accent)}
+[data-theme=duel] .closex{border-radius:0;clip-path:var(--notch-s);background:var(--line);color:var(--ink)}
+[data-theme=duel] .scrim{background:rgba(2,6,14,.78)}
+[data-theme=duel] :focus-visible{outline-color:var(--accent);border-radius:0;outline-offset:-3px}
+/* Lessons */
+[data-theme=duel] table{background:var(--surface);border-radius:0}
+[data-theme=duel] th{text-transform:uppercase;letter-spacing:.1em;font-size:11.5px;color:var(--accent)}
+[data-theme=duel] .steps li::before{border-radius:0;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);font-family:var(--mono);font-size:13px}
+[data-theme=duel] .tl b{font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+[data-theme=duel] .eq .math{letter-spacing:.06em}
+[data-theme=duel] .eq .op{color:var(--gold)}
+[data-theme=duel] .cref{color:var(--accent)}
+/* Progress as Level stars (home page) */
+[data-theme=duel] .stars-prog{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+[data-theme=duel] .stars-prog i{width:18px;height:18px;background:#1d3550;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+[data-theme=duel] .stars-prog i.on{background:var(--gold)}
+[data-theme=duel] .stars-prog b{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--muted);margin-left:8px;text-transform:uppercase}
+/* Cards, decks, tools */
+[data-theme=duel] .cthumb img,[data-theme=duel] .brow img{border-radius:2px}
+[data-theme=duel] .deckcard .cover{border-radius:0}
+[data-theme=duel] .brow{border-radius:0;background:#081120}
+[data-theme=duel] .zone{border-radius:2px;border-color:#24466b}
+[data-theme=duel] .pile{border-radius:0;background:#081120}
+[data-theme=duel] .ctext{border-radius:0;background:#081120}
+[data-theme=duel] .cv h4{color:var(--gold);font-family:var(--mono);letter-spacing:.18em}
+[data-theme=duel] .badge{border-radius:0}
+[data-theme=duel] .tpick button.on{background:var(--accent);color:var(--on-accent)}

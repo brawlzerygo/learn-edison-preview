@@ -1,0 +1,19 @@
+# Build downloads: large and rebuilt by build/build_data.py
+build/raw/
+build/rulings/
+
+
+# Local notes and system files
+CLAUDE.md
+.DS_Store
+Icon?
+Icon
+
+# Secrets and the video course project (never published)
+.env
+video/
+
+# Their own repos (build/publish.sh --site hub / redirect)
+hub/
+redirect/
+preview/

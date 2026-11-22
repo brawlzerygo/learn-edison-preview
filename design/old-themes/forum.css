@@ -1,0 +1,109 @@
+/* ============ THEME D: 2010 FORUM ERA ============
+ The site as a period-correct 2010 fan site: blue-grey page, one white board in the middle, a glossy header,
+ tabbed navigation, category bars, quote boxes, beveled buttons, Verdana. Done precisely, so it reads as
+ deliberate retro, not old. Light by nature. */
+:root[data-theme=forum]{
+  --bg:#c9d3de; --surface:#ffffff; --ink:#1c2733; --muted:#4f6276; --line:#b3c2d1;
+  --accent:#2f5b8a; --accent-soft:#e7eef6; --on-accent:#fff;
+  --gold:#a86f05; --good:#2e7d32; --bad:#b3261e;
+  --display:"Trebuchet MS", Verdana, sans-serif; --body:Verdana, Tahoma, sans-serif; --mono:"Courier New", monospace;
+  --bar:linear-gradient(#5e86b0,#3d6894); --gloss:linear-gradient(#fdfdfd,#d9e2ec);
+  color-scheme:light;
+}
+[data-theme=forum] body{font-size:14px;line-height:1.65}
+/* One white board centered on the page, header and body joined */
+[data-theme=forum] .top{position:static;background:none;backdrop-filter:none;border:none;max-width:1100px;margin:16px auto 0;padding:0 12px}
+[data-theme=forum] .top-in{max-width:none;padding:0;display:block;border:1px solid #7d93ab;border-bottom:none;background:linear-gradient(#2f5b8a,#1d3e63)}
+[data-theme=forum] .brand{display:flex;padding:16px 16px 12px;color:#fff;font-family:var(--display);font-weight:bold;font-size:26px;letter-spacing:-.5px;text-shadow:0 1px 0 #0d2034}
+[data-theme=forum] .brand-mark{background:linear-gradient(#ffe48a,#f2b51e);color:#5b3c00;border:1px solid #b88409;border-radius:4px;font-size:13px}
+[data-theme=forum] .nav{overflow:visible;flex-wrap:wrap;margin:0;background:linear-gradient(#e9eef4,#cfd9e4);border-top:1px solid #0d2034;border-bottom:1px solid #8ea4bb;padding:6px 8px 0;gap:3px}
+[data-theme=forum] .nav a{border-radius:5px 5px 0 0;border:1px solid #8ea4bb;border-bottom:none;background:linear-gradient(#fff,#e2e9f0);color:#1d3e63;font-weight:bold;font-size:12px;padding:5px 11px}
+[data-theme=forum] .nav a.on{background:#fff;color:#1d3e63;position:relative;top:1px}
+[data-theme=forum] .top-in{position:relative}
+[data-theme=forum] .tpick{position:absolute;right:12px;top:18px;background:var(--gloss);border:1px solid #0d2034;border-radius:3px;overflow:hidden}
+[data-theme=forum] .tpick button{font-family:var(--body);text-transform:none;letter-spacing:0;font-size:11px;font-weight:bold;color:#1d3e63}
+[data-theme=forum] .tpick button+button{border-left-color:#8ea4bb}
+[data-theme=forum] main{max-width:1100px;margin:0 auto 24px;background:#fff;border:1px solid #7d93ab;border-top:none;padding:18px 18px 40px}
+[data-theme=forum] main{width:calc(100% - 24px)}
+[data-theme=forum] h1,[data-theme=forum] h2,[data-theme=forum] h3{font-weight:bold;color:#1d3e63}
+[data-theme=forum] .hero h1{font-size:28px;letter-spacing:-.5px}
+[data-theme=forum] .lesson h1{font-size:24px}
+[data-theme=forum] .lesson h2{font-size:17px;border-bottom:1px dotted #8ea4bb;padding-bottom:3px}
+[data-theme=forum] .lesson h3{font-size:15px}
+[data-theme=forum] .crumbs{font-weight:bold;font-size:12px}
+[data-theme=forum] .crumbs a{color:#2f5b8a}
+/* Category bars for section headings on the home page */
+[data-theme=forum] .level-head{display:block;border:1px solid #8ea4bb;border-bottom:none;margin-bottom:0}
+[data-theme=forum] .level-head h2{display:inline;font-size:13px;color:#fff}
+[data-theme=forum] .level-head{background:var(--bar);padding:6px 9px}
+[data-theme=forum] .level-head p{display:block;color:#dfe9f4;font-size:11.5px;margin-top:2px}
+[data-theme=forum] .level-head p a{color:#fff}
+[data-theme=forum] .lessons{border:1px solid #8ea4bb;padding:8px;gap:6px;background:#eef3f8}
+[data-theme=forum] .level-tag{border-radius:3px;background:linear-gradient(#ffe48a,#f2b51e);color:#5b3c00;border:1px solid #b88409;font-family:var(--body);font-size:11px;font-weight:bold;padding:1px 6px;margin-right:6px}
+[data-theme=forum] .level-tag.zero{background:linear-gradient(#d9f2c2,#9ccf6e);border-color:#5c8f2c;color:#24420b}
+/* Panels: square, hairline, quote-box style */
+[data-theme=forum] :is(.goals,.recap,.eq,.timeline,.term,.banl section,.board,.bpanel,.filters,.sheet,.fc-face,.deckcard,.lcard,.synpanel){border-radius:0;border-color:#b3c2d1}
+[data-theme=forum] .lcard{background:#fff;padding:10px}
+[data-theme=forum] a.lcard:hover{background:#f6f9fc;border-color:#7d93ab}
+[data-theme=forum] .lcard h3{font-size:13.5px;color:#1d3e63}
+[data-theme=forum] .lcard p{font-size:12px}
+[data-theme=forum] .lnum{border-radius:3px;background:var(--gloss);border:1px solid #8ea4bb;color:#1d3e63;font-family:var(--body);font-size:12px;width:30px;height:30px}
+[data-theme=forum] .lcard.done .lnum{background:linear-gradient(#d9f2c2,#9ccf6e);border-color:#5c8f2c;color:#24420b}
+[data-theme=forum] .pill{border-radius:3px;background:#eef3f8;border:1px solid #c3cfdb;font-size:10.5px;color:#45576b}
+[data-theme=forum] .goals{background:#f6f8fa}
+[data-theme=forum] .goals h4{font-family:var(--body);font-size:11px;color:#1d3e63}
+[data-theme=forum] .call{border-radius:0;border:1px solid #c3cfdb;background:#f6f8fa;font-size:13px}
+[data-theme=forum] .call b.tag{font-family:var(--body);font-size:11px;text-transform:none;letter-spacing:0}
+[data-theme=forum] .call b.tag::after{content:":"}
+[data-theme=forum] .call.analogy{background:#fffbe6;border-color:#e5d38b}
+[data-theme=forum] .call.analogy b.tag{color:#7a5a00}
+[data-theme=forum] .call.key{font-size:15px;border-left-color:#2f5b8a}
+[data-theme=forum] .recap{background:#f6f8fa}
+[data-theme=forum] .recap h2{font-size:14px !important}
+[data-theme=forum] .skipbar{border-radius:0;border:1px solid #e5d38b;background:#fffbe6;color:#5b4a00;font-size:12px}
+/* Buttons and controls: beveled */
+[data-theme=forum] .btn{border-radius:3px;background:var(--gloss);border:1px solid #7d93ab;color:#1d3e63;font-size:12px;font-weight:bold;padding:5px 12px;box-shadow:inset 0 1px 0 #fff}
+[data-theme=forum] .btn:hover{background:linear-gradient(#fff,#e6edf4);border-color:#4f6f91}
+[data-theme=forum] .btn:active{background:linear-gradient(#d9e2ec,#f4f7fa);box-shadow:inset 0 1px 2px rgba(0,0,0,.2)}
+[data-theme=forum] .btn.primary{background:linear-gradient(#4d7fb3,#2c5a8a);border-color:#1d3e63;color:#fff;text-shadow:0 -1px 0 #1d3e63;box-shadow:inset 0 1px 0 rgba(255,255,255,.35)}
+[data-theme=forum] .btn.small{font-size:11px;padding:3px 9px;border-radius:3px}
+[data-theme=forum] :is(select,input[type=text],input[type=number],input[type=search],textarea){border-radius:2px;border:1px solid #7f9db9;font-size:12.5px;padding:5px 7px;background:#fff}
+[data-theme=forum] .chip{border-radius:3px;background:var(--gloss);border:1px solid #8ea4bb;color:#1d3e63;font-size:11.5px;padding:3px 9px}
+[data-theme=forum] .chip.on{background:linear-gradient(#4d7fb3,#2c5a8a);border-color:#1d3e63;color:#fff}
+[data-theme=forum] .closex{border-radius:3px;background:var(--gloss);border:1px solid #7d93ab;color:#1d3e63;width:26px;height:26px;font-size:15px}
+/* Tables: blue header bar, striped rows */
+[data-theme=forum] table{border:1px solid #8ea4bb;border-radius:0;font-size:12.5px}
+[data-theme=forum] th{background:var(--bar);color:#fff;font-family:var(--body);font-size:11.5px}
+[data-theme=forum] td{border-bottom:1px solid #d3dde7}
+[data-theme=forum] tbody tr:nth-child(even) td{background:#f6f8fa}
+[data-theme=forum] .steps li::before{border-radius:3px;background:var(--gloss);border:1px solid #8ea4bb;color:#1d3e63;font-family:var(--body);font-size:12px;width:26px;height:26px}
+[data-theme=forum] .tl b{background:#eef3f8;color:#1d3e63;font-family:var(--body);font-size:12px}
+[data-theme=forum] .eq{background:#f6f8fa}
+[data-theme=forum] .eq .math{font-family:var(--body);font-size:14px;color:#1d3e63}
+[data-theme=forum] .cref{color:#2f5b8a;text-decoration-style:solid}
+/* Progress as a rank badge (home page) */
+[data-theme=forum] .rank{display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid #c3cfdb;background:#f6f8fa;padding:8px 10px;font-size:12px}
+[data-theme=forum] .rank .rbadge{background:linear-gradient(#ffe48a,#f2b51e);border:1px solid #b88409;border-radius:3px;padding:1px 7px;font-weight:bold;color:#5b3c00;font-size:11px}
+[data-theme=forum] .rank .pips{display:flex;gap:2px}
+[data-theme=forum] .rank .pips i{width:10px;height:10px;border:1px solid #8ea4bb;background:#fff}
+[data-theme=forum] .rank .pips i.on{background:linear-gradient(#ffe48a,#f2b51e);border-color:#b88409}
+/* Cards, decks, tools */
+[data-theme=forum] .cthumb img,[data-theme=forum] .brow img{border-radius:0;box-shadow:none;border:1px solid #8ea4bb}
+[data-theme=forum] .cthumb{font-size:11px;color:#1d3e63}
+[data-theme=forum] .deckcard{font-size:12.5px;color:#1d3e63}
+[data-theme=forum] .deckcard .cover{border-radius:0;border:1px solid #8ea4bb}
+[data-theme=forum] .brow{border-radius:0;background:#fff}
+[data-theme=forum] .zone{border-radius:0}
+[data-theme=forum] .pile{border-radius:3px;background:var(--gloss);border-color:#8ea4bb;font-size:11.5px}
+[data-theme=forum] .ctext{border-radius:0;background:#f6f8fa;font-size:13px}
+[data-theme=forum] .rul{font-size:13px}
+[data-theme=forum] .cv h4{font-family:var(--body);font-size:11px;color:#1d3e63}
+[data-theme=forum] .note,[data-theme=forum] .srcnote{font-size:11.5px}
+[data-theme=forum] .fc-face .q{font-size:18px}
+[data-theme=forum] .tpick button.on{background:linear-gradient(#4d7fb3,#2c5a8a);color:#fff}
+@media(max-width:640px){
+  [data-theme=forum] .top{margin-top:0;padding:0}
+  [data-theme=forum] main{width:100%;border-left:none;border-right:none}
+  [data-theme=forum] .brand{font-size:22px}
+  [data-theme=forum] .tpick{position:static;margin:0 12px 10px;width:auto}
+}
