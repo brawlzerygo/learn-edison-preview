@@ -438,16 +438,22 @@ ${call('analogy','Think of it like this','<p>Your Main Deck is a bag of random t
 ${call('rule','Bringing a Synchro back from the Graveyard','<p>Cards like '+c('call')+' can revive a Synchro from the Graveyard. But only if it was <b>properly Synchro Summoned</b> first. A Synchro that never landed on the field the right way cannot be revived.</p>')}
 <h2>The toolbox</h2>
 <p>Most Edison decks run almost the same Extra Deck: one copy of each strong, generic Synchro. Each one solves a different problem. You pick the one the moment calls for.</p>
-<div class="tbl-wrap"><table><thead><tr><th>Level</th><th>Common choices</th></tr></thead><tbody>
-<tr><td>4</td><td>${c('armory')}</td></tr>
-<tr><td>5</td><td>${c('catastor')}, ${c('android')}</td></tr>
-<tr><td>6</td><td>${c('goyo')}, ${c('brionac')}</td></tr>
-<tr><td>7</td><td>${c('blackrose')}, ${c('fairy')}</td></tr>
-<tr><td>8</td><td>${c('stardust')}, ${c('thought')}, ${c('colossal')}, ${c('rda')}</td></tr>
-<tr><td>9</td><td>${c('mistwurm')}</td></tr>
-<tr><td>Fusion</td><td>${c('ctfd')}</td></tr>
+<div class="tbl-wrap"><table><thead><tr><th>Level</th><th>Card</th><th>Description</th></tr></thead><tbody>
+<tr><td>4</td><td>${c('armory')}</td><td>Equips to your monster for +1000 ATK. When that monster wins a battle, your opponent also takes damage equal to the loser's ATK.</td></tr>
+<tr><td>5</td><td>${c('catastor')}</td><td>Destroys any non-DARK monster it battles before damage, so it beats much bigger monsters. Not a face-down one.</td></tr>
+<tr><td>5</td><td>${c('android')}</td><td>A small effect, but 2400 ATK at Level 5 beats most monsters.</td></tr>
+<tr><td>6</td><td>${c('goyo')}</td><td>2800 ATK. A monster it destroys in battle comes to your side of the field.</td></tr>
+<tr><td>6</td><td>${c('brionac')}</td><td>Discard cards to return the same number of cards on the field to the hand. It answers anything, as often as you can pay.</td></tr>
+<tr><td>7</td><td>${c('blackrose')}</td><td>Can destroy every card on the field when it is Synchro Summoned: a reset when you are behind.</td></tr>
+<tr><td>7</td><td>${c('fairy')}</td><td>Special Summons a Level 4 or lower from your hand once per turn, often for one more Synchro. No attacks that turn.</td></tr>
+<tr><td>8</td><td>${c('stardust')}</td><td>Tributes itself to stop a card that would destroy cards, like Mirror Force, then comes back in the End Phase.</td></tr>
+<tr><td>8</td><td>${c('thought')}</td><td>2700 ATK. Gains Life Points equal to the ATK of each monster it destroys in battle.</td></tr>
+<tr><td>8</td><td>${c('colossal')}</td><td>Gains ATK for every Warrior in either Graveyard. When destroyed in battle, it can revive a Warrior, even itself.</td></tr>
+<tr><td>8</td><td>${c('rda')}</td><td>3000 ATK. Attacking a defender destroys all their defenders, but your monsters that did not attack are destroyed in your End Phase.</td></tr>
+<tr><td>9</td><td>${c('mistwurm')}</td><td>Needs 1 Tuner + 2 or more others. Returns up to 3 of your opponent's cards to the hand when it is Synchro Summoned.</td></tr>
+<tr><td>Fusion</td><td>${c('ctfd')}</td><td>Made from Cyber Dragon plus Machines from either field. 1000 ATK for each monster used.</td></tr>
 </tbody></table></div>
-<p>That is 13 cards. Decks use the last 2 slots for their own Synchros, or for a second copy of a strong one like Stardust Dragon. You will learn what each one does in Lessons 11 and 12.</p>
+<p>That is 13 cards. Decks use the last 2 slots for their own Synchros, or for a second copy of a strong one like Stardust Dragon. Lessons 11 and 12 go deeper on each one, with the plays they make.</p>
 <h3>A surprise in the toolbox</h3>
 <p>${c('ctfd')} is a Fusion, but it does not use Polymerization. You send ${c('cyberdragon')} plus Machine monsters from <b>either side of the field</b> to the Graveyard. Many Synchros are Machines, like ${c('catastor')} and ${c('armory')}. So your opponent's Machine can become part of your monster.</p>
 ${call('mistake','Common beginner mistakes','<ul><li>Putting a bounced Synchro in your hand. It goes back to the Extra Deck.</li><li>Counting the Extra Deck toward your 40 cards. It does not count.</li><li>Running 3 copies of one Synchro. One of each different answer is usually better.</li></ul>')}
@@ -457,6 +463,8 @@ flash:[
 ['Your Stardust Dragon is returned to your hand. Where does it go?','Back to your Extra Deck.'],
 ['Your Synchro is destroyed by battle. Where does it go?','To your Graveyard.'],
 ['Can Call of the Haunted revive any Synchro in your Graveyard?','Only one that was properly Synchro Summoned first.'],
+['Which toolbox Synchro stops Mirror Force?','Stardust Dragon. It tributes itself to stop a card that would destroy cards, then comes back in the End Phase.'],
+['Does Ally of Justice Catastor destroy a face-down monster it attacks?','No. Its effect only works on a non-DARK monster it battles face up.'],
 ['What is special about how you summon Chimeratech Fortress Dragon?','No Polymerization. You send Cyber Dragon and Machines from either side of the field to the Graveyard.'],
 ['Why do most decks run one copy of many different Synchros?','Each one answers a different problem, so you can pick the right tool for the moment.']
 ]});
