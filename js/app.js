@@ -2781,38 +2781,3 @@ function bindDuel(){
 
 route();
 
-/* ============ LEFT SIDE NAV (a trial on the preview site only; Zack, 2026-11-22: "not fully sold on it yet, id want
- to see it on a preview site first") ============
- Switched on by data-sidenav on <html>, which only build/make-preview.mjs adds, so the live site never shows it until
- Zack OKs it (then: add data-sidenav to index.html, or fold this in for good). Every section and page in one column,
- the course's lessons grouped by level, the current page lit and its group open. On a phone it's a drawer behind a
- Menu button; the practice board and the duel hide it to keep their full-width arena. */
-(function(){
-  if(!document.documentElement.hasAttribute('data-sidenav'))return;
-  const lv=(name,arr)=>({name,items:arr.map(l=>['lesson-'+l.n,`${typeof l.n==='string'?l.n:l.n}. ${l.title}`])});
-  const GROUPS=[
-    {title:'Learn',links:[['course','Course overview'],['flashcards','Flashcards'],['rules','Rules'],['glossary','Glossary'],['library','Library']],
-     levels:[lv('Step 0: the basics',B),lv('Edison 101',L),lv('Edison 201',L2),lv('Edison 301',L3)]},
-    {title:'Cards',links:[['cards','Card search'],['staples','Staples'],['banlist','Banlist'],['rulings','Rulings'],['errata','Errata']]},
-    {title:'Decks',links:[['decks','All decks'],['builder','Deck builder'],['opponents','Know your opponent']]},
-    {title:'Play',links:[['duel','Duel the computer'],['simulator','Practice board']]}];
-  const aside=document.createElement('aside');aside.id='sidenav';aside.setAttribute('aria-label','All pages');
-  aside.innerHTML=`<a class="sn-home" href="#home">Home</a>`+GROUPS.map(g=>`<section class="sn-g"><h4>${g.title}</h4>
-    ${g.links.map(([k,t])=>`<a href="#${k}" data-sk="${k}">${esc(t)}</a>`).join('')}
-    ${(g.levels||[]).map(v=>`<details class="sn-lv"><summary>${esc(v.name)}</summary>${v.items.map(([k,t])=>`<a href="#${k}" data-sk="${k}">${esc(t)}</a>`).join('')}</details>`).join('')}</section>`).join('');
-  document.querySelector('.top').after(aside);
-  const btn=document.createElement('button');btn.type='button';btn.className='sn-btn';btn.setAttribute('aria-controls','sidenav');btn.setAttribute('aria-expanded','false');btn.textContent='☰ Menu';
-  document.querySelector('.top-in').prepend(btn);
-  const scrim=document.createElement('div');scrim.className='sn-scrim';document.body.appendChild(scrim);
-  const setOpen=o=>{document.documentElement.classList.toggle('sn-open',o);btn.setAttribute('aria-expanded',String(o))};
-  btn.onclick=()=>setOpen(!document.documentElement.classList.contains('sn-open'));scrim.onclick=()=>setOpen(false);
-  aside.addEventListener('click',e=>{if(e.target.closest('a'))setOpen(false)});
-  linkify(aside);
-  const mark=()=>{const h=curKey();document.documentElement.dataset.page=h.replace(/-.*/,'');
-    aside.querySelectorAll('a[data-sk]').forEach(a=>{const on=a.dataset.sk===h||(h.startsWith('rules-')&&a.dataset.sk==='rules')||(h.startsWith('deck-')&&a.dataset.sk==='decks')||(h.startsWith('opponents-')&&a.dataset.sk==='opponents')||(h.startsWith('card-')&&a.dataset.sk==='cards');
-      a.classList.toggle('on',on);if(on){const d=a.closest('details');if(d)d.open=true}});
-    const cur=aside.querySelector('a.on');if(cur&&cur.closest('details'))cur.scrollIntoView({block:'nearest'})};
-  const _route=route;window.route=route=function(){_route();mark()};
-  window.removeEventListener('popstate',_route);window.addEventListener('popstate',route);
-  mark();
-})();

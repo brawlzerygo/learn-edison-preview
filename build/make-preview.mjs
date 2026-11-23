@@ -5,8 +5,8 @@
 //
 // It copies exactly what the live site would publish (the files git would commit, after build/prerender.mjs ran), then
 // makes the copy safe to be public next to the real site: noindex on every page, robots.txt blocking crawlers, no
-// sitemap, its own CNAME, and a small "Preview" badge in the corner that links to the live site. Features on trial are
-// switched on here only: data-sidenav on <html> turns on the left side nav (js/app.js, end).
+// sitemap, its own CNAME, and a small "Preview" badge in the corner that links to the live site.
+// A feature on trial can be switched on here only, by adding an attribute to <html> that the code checks.
 import fs from 'fs'; import path from 'path'; import { execFileSync } from 'child_process'; import { fileURLToPath } from 'url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'preview');
@@ -21,7 +21,7 @@ for (const f of files) {
   fs.mkdirSync(path.dirname(dst), { recursive: true });
   if (f.endsWith('.html')) {
     let s = fs.readFileSync(src, 'utf8');
-    s = s.replace('<html lang="en">', '<html lang="en" data-sidenav>').replace('<head>', '<head>\n<meta name="robots" content="noindex, nofollow">').replace(/<body([^>]*)>/, m => m + '\n' + badge);
+    s = s.replace('<head>', '<head>\n<meta name="robots" content="noindex, nofollow">').replace(/<body([^>]*)>/, m => m + '\n' + badge);
     fs.writeFileSync(dst, s); html++;
   } else fs.copyFileSync(src, dst);
 }
