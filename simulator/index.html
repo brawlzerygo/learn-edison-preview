@@ -23,6 +23,7 @@
 <a href="https://edison.learnretro.com/" title="This is the preview site. Open the live site." style="position:fixed;right:12px;bottom:12px;z-index:9999;background:#c2410c;color:#fff;font:700 12px/1 Verdana,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border-radius:6px;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.25)">Preview</a>
 <header class="top"><div class="top-in">
   <div class="brand"><a class="bhub" href="https://learnretro.com/" title="Learn Retro: every format"><img class="blogo" src="img/icon-d2-512.png" alt="" width="34" height="34">Learn<em>Retro</em></a><a class="bfmt" href="/" title="Edison home">Edison</a></div>
+  <button type="button" class="mburger" id="mburger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M3 6h16"/><path class="l2" d="M3 11h16"/><path class="l3" d="M3 16h16"/></svg></button>
   <nav class="nav" id="nav" aria-label="Sections">
     <a href="/" data-v="home">Home</a>
     <div class="ndrop"><button type="button" class="ndrop-btn" data-menu="m-learn" data-group="course lesson flashcards rules glossary library" aria-haspopup="true" aria-expanded="false">Learn ▾</button></div>
@@ -57,7 +58,8 @@
     <input type="search" id="sq" placeholder="Search cards, lessons, decks..." aria-label="Search the site" autocomplete="off" aria-controls="sres" aria-expanded="false">
     <div class="sres" id="sres" role="listbox" aria-label="Search results"></div>
   </div>
-</div></header>
+</div>
+<nav class="mnav" id="mnav" aria-label="Site menu" hidden></nav></header>
 <main id="app"><div class="arena" id="arena" style="height: auto; --cw: 106px; --gx: 5px;"><div class="abar"><b class="atitle">Practice Board</b><span class="asub">Build any hand or field. Tap an empty zone to add a card, tap a card for actions.</span><span class="atools"><button class="abtn" id="rulesbtn" type="button" aria-pressed="true" title="Free setup lets you place any card anywhere, for building scenarios">Free setup: on</button><button class="abtn" id="loaddecks" type="button">Load decks</button><select id="preset" aria-label="Load a setup"><option value="empty">Empty board</option><option value="black">Lesson 4: Black Rose</option><option value="sheep">Lesson 6: Scapegoat</option><option value="dandy">Lesson 6: Dandylion</option></select><button class="btn small" id="loadp">Load</button><button class="abtn" id="fsbtn" type="button">⛶ Fullscreen</button></span></div>
   <div class="astage">
     <div class="amat">

@@ -1119,7 +1119,7 @@ function route(){
   const h=curKey();
   document.querySelectorAll('#nav > a').forEach(a=>a.classList.toggle('on',h===a.dataset.v));
   document.querySelectorAll('.ndrop-btn').forEach(b=>b.classList.toggle('on',b.dataset.group.split(' ').some(t=>h.startsWith(t))));
-  document.querySelectorAll('.ndrop-menu a').forEach(a=>a.classList.toggle('on',(a.dataset.k||(a.getAttribute('href').startsWith('/')?pathToKey(a.getAttribute('href')):a.getAttribute('href').slice(1)))===h));closeMenus();
+  document.querySelectorAll('.ndrop-menu a,.mnav a').forEach(a=>a.classList.toggle('on',(a.dataset.k||(a.getAttribute('href').startsWith('/')?pathToKey(a.getAttribute('href')):a.getAttribute('href').slice(1)))===h));closeMenus();
   if(h.startsWith('lesson-')){renderLesson(h.slice(7))}
   else if(h==='flashcards')renderFlash();
   else if(h==='glossary')renderGloss();
@@ -1304,10 +1304,22 @@ function renderOpponents(sel){
     ${panel}
     <details class="mall" ${d?'':'open'}><summary>All matchups at once</summary>
       <p class="note" style="max-width:780px">Read across a row. Green means the row's deck is favored against the column's deck, red means it's unfavored, grey is even. Click any square to see why.</p>
-      ${chart}</details>
+      ${chart}
+      <div class="mlist"><label class="mlpick">Show matchups for <select id="mlsel">${OPP.decks.map(o=>`<option value="${o.id}" ${(d?o.id===d.id:o===OPP.decks[0])?'selected':''}>${esc(o.name)}</option>`).join('')}</select></label><div id="mlrows"></div></div></details>
     <p class="note" style="margin-top:16px;max-width:780px">Matchups are read from the cards and the deck lists on this site (which deck's common cards hit the other deck's engine), not from tournament results. A good player on the weaker side still wins plenty of games. Styles and what beats each one: <a href="#lesson-18">Lesson 18</a>. What to side in: <a href="#lesson-29">Lesson 29</a>.</p>`;
-  oppPopover();
+  oppPopover();oppList();
   if(d)setTimeout(()=>{const p=document.getElementById('opanel');if(p)window.scrollTo({top:p.getBoundingClientRect().top+window.scrollY-72,behavior:'auto'})},30);
+}
+
+/* On phones the full chart is a list (Zack, 2026-11-23: the chart "looks broken and doesn't work on mobile"): pick a
+ deck, and every matchup shows with its verdict and the reason, no tapping needed. CSS swaps it in under 701 px. */
+function oppList(){
+  const sel=document.getElementById('mlsel'),box=document.getElementById('mlrows');if(!sel||!box)return;
+  const draw=()=>{const id=sel.value,me=OPPBY[id];
+    const xs=OPP.decks.filter(o=>o.id!==id).map(o=>({o,...oppEdge(id,o.id)})).sort((a,b)=>b.e-a.e);
+    box.innerHTML=xs.map(x=>{const k=x.e===1?'fav':x.e===-1?'unf':'even';
+      return `<a class="mlrow ${k}" href="#opponents-${x.o.id}"><span class="mthumb" ${oppArt(x.o)}></span><span class="mlbody"><span class="mlhead"><b>vs ${esc(x.o.name)}</b><i>${MATCHWORD[x.e]}</i></span><span class="mwhy2">${esc(x.why)}</span></span></a>`}).join('')};
+  sel.onchange=draw;draw();
 }
 
 /* The explainer card on the full chart: click or tap a square to see both decks, the verdict and the reason (click
@@ -1707,6 +1719,19 @@ document.querySelectorAll('.ndrop-btn').forEach(btn=>btn.onclick=e=>{e.stopPropa
 document.addEventListener('click',e=>{if(!e.target.closest('.ndrop-menu'))closeMenus()});
 document.addEventListener('keydown',e=>{if(e.key!=='Escape')return;const open=document.querySelector('.ndrop-menu.open');if(open){closeMenus();document.querySelector(`[data-menu="${open.id}"]`).focus()}});
 window.addEventListener('scroll',closeMenus,{passive:true});
+/* Phone menu (Zack, 2026-11-23: "there is no hamburger menu on phones"): under 861 px (phones and tablets) the four section menus fold into
+ one button; its panel lists every page under its section, built from the desktop menus so the two never drift apart. */
+(function(){
+  const btn=document.getElementById('mburger'),nav=document.getElementById('mnav');if(!btn||!nav)return;
+  nav.innerHTML=`<a class="mhome" href="/">Home</a>`+[...document.querySelectorAll('.ndrop-btn')].map(b=>{const m=document.getElementById(b.dataset.menu);
+    return `<section><h5>${b.textContent.replace('▾','').trim()}</h5>${[...m.querySelectorAll('a')].map(a=>`<a href="${a.getAttribute('href')}">${a.firstChild.textContent.trim()}<small>${a.querySelector('small')?.textContent||''}</small></a>`).join('')}</section>`}).join('');
+  const set=o=>{nav.hidden=!o;btn.setAttribute('aria-expanded',String(o));btn.setAttribute('aria-label',o?'Close menu':'Open menu');btn.classList.toggle('open',o)};
+  btn.onclick=e=>{e.stopPropagation();set(nav.hidden)};
+  nav.addEventListener('click',e=>{if(e.target.closest('a'))set(false)});
+  document.addEventListener('click',e=>{if(!nav.hidden&&!e.target.closest('#mnav,#mburger'))set(false)});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!nav.hidden){set(false);btn.focus()}});
+  window.addEventListener('resize',()=>{if(innerWidth>860&&!nav.hidden)set(false)});
+})();
 /* ============ SITE SEARCH (Zack, 2026-11-17) ============
    One box in the header searches everything: pages, lessons (titles and text), cards, decks, glossary terms and
    Library videos. Results show as you type, grouped by kind; arrows and Enter pick one, Esc closes. */

@@ -703,3 +703,61 @@ table.mchart2 tr.on td{box-shadow:inset 0 0 0 2px var(--accent)}
 /* The Learn Retro logo mark before the wordmark (Zack, 2026-11-22: the rewind LR logo). */
 .brand .bhub{display:inline-flex;align-items:center}
 .brand .blogo{width:34px;height:34px;margin-right:6px;flex:none}
+/* Phone menu (Zack, 2026-11-23): under 641 px the section menus fold into one button; the search keeps its own row. */
+.mburger{display:none}
+.mnav{display:none}
+@media(min-width:641px) and (max-width:860px){
+  .top .top-in{display:flex}.top .ssearch{flex:1;max-width:380px;margin-left:auto;width:auto}.mburger{order:10;margin-left:0!important}
+  .mnav:not([hidden]){grid-template-columns:repeat(4,1fr)!important}.mnav .mhome{grid-column:1/-1}
+}
+@media(max-width:860px){
+  .top .nav{display:none}
+  .mburger{display:inline-flex;align-self:center;align-items:center;justify-content:center;margin-left:auto;width:44px;height:44px;flex:none;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);cursor:pointer;padding:0}
+  .mburger path{transition:transform .2s,opacity .2s;transform-origin:11px 11px}
+  .mburger.open .l1{transform:translateY(5px) rotate(45deg)}.mburger.open .l2{opacity:0}.mburger.open .l3{transform:translateY(-5px) rotate(-45deg)}
+  .mnav:not([hidden]){display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;padding:6px 12px 14px;border-top:1px solid var(--line);max-height:calc(100vh - 120px);overflow-y:auto}
+  .mnav .mhome{grid-column:1/-1}
+  .mnav h5{margin:10px 0 2px;padding:0 10px;font-family:var(--label,inherit);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .mnav a{display:flex;flex-direction:column;justify-content:center;min-height:44px;padding:6px 10px;border-radius:8px;text-decoration:none;color:var(--ink);font-weight:700;font-size:15px;line-height:1.25}
+  .mnav a small{font-weight:400;font-size:12px;color:var(--muted)}
+  .mnav a.on{background:var(--accent-soft);color:var(--accent)}
+  .ssearch input{height:44px;font-size:16px}
+}
+@media(max-width:860px) and (prefers-reduced-motion:reduce){.mburger path{transition:none}}
+/* Matchup chart on phones (Zack, 2026-11-23): the table becomes a pick-a-deck list with every reason shown;
+ on tablets the table keeps its deck names pinned while it scrolls. */
+.mlist{display:none}
+html[data-theme] table.mchart2{overflow:visible}
+table.mchart2 tbody th{position:sticky;left:0;z-index:1;background:var(--surface)}
+table.mchart2 th.corner{position:sticky;left:0;z-index:2;background:var(--surface)}
+@media(max-width:700px){
+  .mchart-wrap{display:none}
+  .mlist{display:block;margin:8px 0 4px}
+  .mlpick{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:15px}
+  .mlpick select{width:100%;height:44px;font-size:16px}
+  #mlrows{display:grid;gap:8px;margin-top:12px}
+  .mlrow{display:flex;gap:10px;align-items:flex-start;padding:10px;border:1px solid var(--ml);border-left:4px solid var(--mc);border-radius:10px;background:var(--surface);text-decoration:none;color:var(--ink)}
+  .mlbody{min-width:0;flex:1}
+  .mlhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .mlhead b{font-size:15px}
+  .mlhead i{font-style:normal;font-family:var(--label,inherit);font-size:11px;font-weight:bold;background:var(--mb);color:var(--mc);border:1px solid var(--ml);border-radius:5px;padding:1px 6px}
+  .mall{padding:10px 12px}
+  .mall > .note{display:none}
+}
+/* Phone tap targets (2026-11-23 mobile audit): every button, chip and link row is at least 44 px tall on phones. */
+@media(max-width:640px){
+  .brand a{display:inline-flex;align-items:center;min-height:44px}
+  .btn,.btn.small,.chip{min-height:44px}
+  .chip{display:inline-flex;align-items:center}
+  .pgnums .btn{min-width:44px}
+  .brow .btn{min-width:40px;min-height:44px;justify-content:center}
+  .topics a{display:inline-flex;align-items:center;min-height:44px}
+  .hlinks{gap:0 16px}.hlinks a{display:inline-flex;align-items:center;min-height:40px}
+  .rcard h3 button{min-height:40px}
+  main select,main input:not([type=checkbox]):not([type=radio]):not([type=range]){min-height:44px;font-size:16px}
+}
+/* The LP numbers sit on the dark arena: the theme's white input background must not reach them (2026-11-23 audit). */
+html[data-theme] .arena .lpbox .lpv input{background:transparent;border:none;height:auto;min-height:0;font-size:24px}
+@media(max-width:640px){.arena .lpbox .abtn{min-height:40px;padding:4px 10px}}
+@media(max-width:640px){.frow select{flex:1 1 140px;min-width:0}.frow input[type=search]{flex-basis:100%}}
+@media(max-width:640px){main input[type=search]{width:100%;max-width:none}}
