@@ -700,3 +700,6 @@ table.mchart2 tr.on td{box-shadow:inset 0 0 0 2px var(--accent)}
 /* The wordmark goes back to the Learn Retro hub; the format name goes to this site's home (Zack, 2026-11-22). */
 .brand a{color:inherit;text-decoration:none}
 .brand .bhub:hover em,.brand a.bfmt:hover{text-decoration:underline;text-underline-offset:3px}
+/* The Learn Retro logo mark before the wordmark (Zack, 2026-11-22: the rewind LR logo). */
+.brand .bhub{display:inline-flex;align-items:center}
+.brand .blogo{width:30px;height:30px;border-radius:7px;margin-right:9px;flex:none}
